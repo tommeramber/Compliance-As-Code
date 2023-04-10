@@ -14,13 +14,13 @@ spec:
         exclude: true
   template:
     metadata:
-      name: '{{path.basename}}'      
+      name: {{`'{{path.basename}}'`}}
     spec:
       project: default
       source:
         repoURL: https://github.com/tommeramber/Compliance-As-Code.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: {{`'{{path}}'`}}
         helm:
           valueFiles:
           - values.yaml
