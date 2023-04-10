@@ -24,7 +24,7 @@
     by doing this, our argocd will manage itself as well
   template:
     src: roles/deploy-app-of-apps/templates/app-argo-objects.yaml.j2
-    dest: ../Part-1-App-of-Apps/templates/app-argo-objects.yaml
+    dest: ../Part-1-App-of-Apps/templates/app-acm-argo-objects.yaml
 
 - name: create applicationset-security-tools yaml based on your git repo variable using ansible template module
   template:
