@@ -1,9 +1,5 @@
 ---
 # Based on : https://github.com/stolostron/multicloud-integrations
-- name: Apply ManagedClusterSet Object
-  kubernetes.core.k8s:
-    state: present
-    definition: "{{ lookup('file', 'yamls/managedclusterset.yaml') | from_yaml }}"
 - name: Apply ManagedClusterSetBinding Object
   kubernetes.core.k8s:
     state: present
