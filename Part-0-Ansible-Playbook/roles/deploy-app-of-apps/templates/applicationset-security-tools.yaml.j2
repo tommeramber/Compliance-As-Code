@@ -14,15 +14,15 @@ spec:
         exclude: true
   template:
     metadata:
-      {% raw %}name: '{{path.basename}}'
-      {% endraw %}
+      {% raw %}name: '{{path.basename}}'{% endraw %}
+      
     spec:
       project: default
       source:
         repoURL: {{ git_repo }}
         targetRevision: HEAD
-        {% raw %}path: '{{path}}'
-        {% endraw %}
+        {% raw %}path: '{{path}}'{% endraw %}
+
         helm:
           valueFiles:
           - values.yaml
