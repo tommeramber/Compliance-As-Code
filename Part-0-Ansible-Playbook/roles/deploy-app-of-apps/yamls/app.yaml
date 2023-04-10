@@ -14,3 +14,5 @@ spec:
     path: Part-1-App-of-Apps/ 
     repoURL: https://github.com/tommeramber/Compliance-As-Code.git
     targetRevision: HEAD
+  syncPolicy:
+    automated: {}

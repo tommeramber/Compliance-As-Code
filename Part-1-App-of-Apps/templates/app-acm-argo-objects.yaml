@@ -14,3 +14,5 @@ spec:
     path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
     repoURL: https://github.com/tommeramber/Compliance-As-Code.git
     targetRevision: HEAD
+  syncPolicy:
+    automated: {}

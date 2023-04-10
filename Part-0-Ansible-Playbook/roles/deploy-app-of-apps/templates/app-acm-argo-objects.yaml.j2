@@ -14,5 +14,6 @@ spec:
     path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
     repoURL: {{ git_repo }}
     targetRevision: HEAD
+    exclude: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml
   syncPolicy:
     automated: {}
