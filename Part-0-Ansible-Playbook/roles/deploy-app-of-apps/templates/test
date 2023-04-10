@@ -1,0 +1,1 @@
+#{% raw %}exclude: '{Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml,Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclustersetbinding.yaml}'{% endraw %}
