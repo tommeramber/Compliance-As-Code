@@ -8,5 +8,8 @@
   tasks:
     - include_role:
         name: install-and-configure-openshift-gitops-operator 
+      # Pause betweeen roles so the Openshift-GitOps operator will finish creating the relevant Namespace and CRDs
+    - pause:
+        seconds: 120
     - include_role:
         name: acm-openshift-gitops-integration
