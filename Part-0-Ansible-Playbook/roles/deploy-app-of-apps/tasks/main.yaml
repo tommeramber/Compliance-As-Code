@@ -1,0 +1,6 @@
+---
+# Based on : https://github.com/stolostron/multicloud-integrations
+- name: Apply App-of-Apps
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', 'yamls/app.yaml') | from_yaml }}"
