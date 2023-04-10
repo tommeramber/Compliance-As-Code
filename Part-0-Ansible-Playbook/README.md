@@ -1,10 +1,14 @@
 # Part 0 - Lab initation with Ansible Playbook
 
-## Edit the Ansible-Playbook vars
+## Edit & Run the Ansible-Playbook 
 1. Change the `git_repo` to point to your forked git repo project
 ```bash
 cd Part-0-Ansible-Playbook
 sed -i 's,https://github.com/tommeramber/Compliance-As-Code.git,https://github.com/<YOUR_USERNAME>/Compliance-As-Code.git,g' playbook.yaml
+```
+2. Run the Playbook
+```bash
+ansible-playbook playbook.yaml
 ```
 
 ## Explainer

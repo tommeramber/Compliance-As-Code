@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: security-tools
+  namespace: multicluster-mgmt-argocd 
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/tommeramber/ArgoCD-GitOps-Helm-Based-Multi-Cluster-Structure.git
+      revision: HEAD
+      directories:
+      - path: apps/*
+      - path: apps/helm-operators/*
+      - path: apps/helm-operators
+        exclude: true
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: apps
+      source:
+        repoURL: https://github.com/tommeramber/ArgoCD-GitOps-Helm-Based-Multi-Cluster-Structure.git
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          valueFiles:
+          - values-dev-ocp.yaml
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy: {}
+      # Operators
+      #        automated: 
+      #          prune: true
+      #        syncOptions:
+      #        - Replace=true

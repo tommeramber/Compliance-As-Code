@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: security-tools
+  namespace: openshift-gitops 
+spec:
+  generators:
+  - git:
+      repoURL: {{ git_repo }}
+      revision: HEAD
+      directories:
+      - path: Part-2-Compliance-as-GitOps/security-tools/*
+      - path: Part-2-Compliance-as-GitOps/security-tools
+        exclude: true
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: {{ git_repo }}
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          valueFiles:
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy: {}

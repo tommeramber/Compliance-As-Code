@@ -11,13 +11,13 @@ This session provides a demonstration of how to manage compliance policies for m
 ## Prerequisits
 0. ACM Hub Cluster available
 1. Install:
-  - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - [Helm](https://helm.sh/docs/intro/install/)
-  - [Python3](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_installing-and-using-python_configuring-basic-system-settings)
-  - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-  - [Ansible module for kubernetes](https://docs.ansible.com/ansible/latest/collections/kubernetes/core/index.html#plugins-in-kubernetes-core) - ```ansible-galaxy collection install kubernetes.core``` 
-  - [Relevant python modules](https://stackoverflow.com/questions/60866755/ansible-k8s-module-failed-to-import-the-required-python-library-openshift-on) - ```pip3 install openshift pyyaml kubernetes --user```
-  - [oc](https://console.redhat.com/openshift/downloads)
+    - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+    - [Helm](https://helm.sh/docs/intro/install/)
+    - [Python3](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_installing-and-using-python_configuring-basic-system-settings)
+    - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+    - [Ansible module for kubernetes](https://docs.ansible.com/ansible/latest/collections/kubernetes/core/index.html#plugins-in-kubernetes-core) - ```ansible-galaxy collection install kubernetes.core``` 
+    - [Relevant python modules](https://stackoverflow.com/questions/60866755/ansible-k8s-module-failed-to-import-the-required-python-library-openshift-on) - ```pip3 install openshift pyyaml kubernetes --user```
+    - [oc](https://console.redhat.com/openshift/downloads)
 
 ## HowTo
 0. Fork this project
