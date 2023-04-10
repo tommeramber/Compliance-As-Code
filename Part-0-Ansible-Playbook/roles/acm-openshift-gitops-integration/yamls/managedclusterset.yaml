@@ -1,12 +1,10 @@
 # Creates a ManagedClusterSet resource
 ---
-apiVersion: cluster.open-cluster-management.io/v1beta2
+apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: ManagedClusterSet
 metadata:
-  name: all-openshift-clusters
+  name: global
 spec:
   clusterSelector:
-    labelSelector: 
-      matchLabels:
-        vendor: OpenShift
+    labelSelector: {}
     selectorType: LabelSelector

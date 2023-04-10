@@ -8,5 +8,5 @@
   tasks:
     - include_role:
         name: install-and-configure-openshift-gitops-operator 
-        #    - include_role:
-        #        name: acm-openshift-gitops-integration
+    - include_role:
+        name: acm-openshift-gitops-integration

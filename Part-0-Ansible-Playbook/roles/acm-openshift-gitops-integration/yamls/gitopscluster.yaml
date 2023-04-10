@@ -8,15 +8,14 @@
 apiVersion: apps.open-cluster-management.io/v1beta1
 kind: GitOpsCluster
 metadata:
-  name: argo-acm-importer
+  name: argo-acm-clusters
   namespace: openshift-gitops
 spec:
-  # createBlankClusterSecrets: true
   argoServer:
-    cluster: notused
+    cluster: local-cluster
     argoNamespace: openshift-gitops
   placementRef:
     kind: Placement
     apiVersion: cluster.open-cluster-management.io/v1beta1
-    name: all-openshift-clusters
+    name: global
     namespace: openshift-gitops
