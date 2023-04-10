@@ -1,0 +1,19 @@
+---
+# Based on : https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_module.html
+# Based on : https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_info_module.html#ansible-collections-kubernetes-core-k8s-info-module
+- name: >-
+    Validate PackageManifest Object for GitOps Operator. 
+    Failure can be due to missing CatalogSource & ImageContentSourcePolicy for that Operator 
+  k8s_info:
+    api_version: "packages.operators.coreos.com/v1"
+    kind: PackageManifest
+    name: openshift-gitops-operator 
+    namespace: default
+  register: package_manifest
+  failed_when: not package_manifest.resources
+
+
+- name: Apply GitOps Operator Subcription Object
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', 'yamls/gitops-subscription.yaml') | from_yaml }}"

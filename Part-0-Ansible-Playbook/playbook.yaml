@@ -1,0 +1,12 @@
+---
+# Based on : https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_module.html
+# Based on : https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_info_module.html#ansible-collections-kubernetes-core-k8s-info-module
+- name: "RH Summit Demo - Part 0 - Ansible install GitOps Operator"
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - include_role:
+        name: install-and-configure-openshift-gitops-operator 
+        #    - include_role:
+        #        name: acm-openshift-gitops-integration
