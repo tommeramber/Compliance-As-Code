@@ -7,7 +7,7 @@
       kind: Secret
       type: Opaque             
       metadata:
-        name: "my-git-repo"
+        name: "link-git-repo-to-argocd"
         namespace: "openshift-gitops"     
       data:
         type: "{{ 'git'|b64encode }}"
