@@ -19,6 +19,13 @@
     src: roles/deploy-app-of-apps/templates/app.yaml.j2
     dest: roles/deploy-app-of-apps/yamls/app.yaml
 
+- name: >-
+    create app yaml file for the acm-argo-objects based on your git repo variable using ansible template module
+    by doing this, our argocd will manage itself as well
+  template:
+    src: roles/deploy-app-of-apps/templates/app-argo-objects.yaml.j2
+    dest: ../Part-1-App-of-Apps/templates/app-argo-objects.yaml
+
 - name: create applicationset-security-tools yaml based on your git repo variable using ansible template module
   template:
     src: roles/deploy-app-of-apps/templates/applicationset-security-tools.yaml.j2

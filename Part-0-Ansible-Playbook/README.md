@@ -18,6 +18,8 @@ This playbook will also link the ArgoCD instance to all of the managed clusters 
 
 * [Based on the following documentation](https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.7/html-single/applications/index#gitops-config) and [upstream example](https://github.com/stolostron/multicloud-integrations/tree/main/examples/openshift-gitops)
 
+And finally, this playbook will generate the app-of-apps gitops yaml files for us based on your forked git repo; It will generate the initial `ArgoCD application` that will point ArgoCD to all of our `ArgoCD ApplicationSets` - that will deploy everything on the ACM Hub Cluster for us automaticly. The ArgoCD ApplicationSets also requires a git repo url so they are too auto-generated for you by the ansible playbook with your forked project as the git repo.
+
 [Back To Home](../README.md)
 
 
