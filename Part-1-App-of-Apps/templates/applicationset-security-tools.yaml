@@ -2,36 +2,28 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: security-tools
-  namespace: multicluster-mgmt-argocd 
+  namespace: openshift-gitops 
 spec:
   generators:
   - git:
-      repoURL: https://github.com/tommeramber/ArgoCD-GitOps-Helm-Based-Multi-Cluster-Structure.git
+      repoURL: https://github.com/tommeramber/Compliance-As-Code.git
       revision: HEAD
       directories:
-      - path: apps/*
-      - path: apps/helm-operators/*
-      - path: apps/helm-operators
+      - path: Part-2-Compliance-as-GitOps/security-tools/*
+      - path: Part-2-Compliance-as-GitOps/security-tools
         exclude: true
-  syncPolicy:
-    preserveResourcesOnDeletion: true
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '\{\{path.basename\}\}'
     spec:
-      project: apps
+      project: default
       source:
-        repoURL: https://github.com/tommeramber/ArgoCD-GitOps-Helm-Based-Multi-Cluster-Structure.git
+        repoURL: https://github.com/tommeramber/Compliance-As-Code.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: '\{\{path\}\}'
         helm:
           valueFiles:
-          - values-dev-ocp.yaml
+          - values.yaml
       destination:
         server: https://kubernetes.default.svc
       syncPolicy: {}
-      # Operators
-      #        automated: 
-      #          prune: true
-      #        syncOptions:
-      #        - Replace=true
