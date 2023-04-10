@@ -14,8 +14,6 @@ spec:
     path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
     repoURL: {{ git_repo }}
     targetRevision: HEAD
-    {% raw %}
-    exclude: '{Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml,Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclustersetbinding.yaml}'
-    {% endraw %}
+    {% raw %}exclude: '{Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml,Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclustersetbinding.yaml}'{% endraw %}
   syncPolicy:
     automated: {}

@@ -14,6 +14,5 @@ spec:
     path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
     repoURL: https://github.com/tommeramber/Compliance-As-Code.git
     targetRevision: HEAD
-    exclude: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml
-  syncPolicy:
+    exclude: '{Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclusterset.yaml,Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls/managedclustersetbinding.yaml}'  syncPolicy:
     automated: {}
