@@ -12,3 +12,7 @@
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('file', 'yamls/gitopscluster.yaml') | from_yaml }}"
+- name: Apply RBAC Object
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', 'yamls/rbac.yaml') | from_yaml }}"
