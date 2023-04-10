@@ -1,5 +1,24 @@
 ---
-# Based on : https://github.com/stolostron/multicloud-integrations
+- name: Create Secret YAML that will link ArgoCD to the Git repository
+  kubernetes.core.k8s:
+    state: present
+    definition: 
+      apiVersion: v1
+      kind: Secret
+      type: Opaque             
+      metadata:
+        name: "my-git-repo"
+        namespace: "openshift-gitops"     
+      data:
+        type: "{{ 'git'|b64encode }}"
+        insecure: "{{ 'true'|b64encode }}"
+        url: "{{git_repo|b64encode}}"
+
+- name: create app-of-apps yaml based on your git repo variable using ansible template module
+  template:
+    src: roles/deploy-app-of-apps/templates/app.yaml.j2
+    dest: roles/deploy-app-of-apps/yamls/app.yaml
+
 - name: Apply App-of-Apps
   kubernetes.core.k8s:
     state: present
