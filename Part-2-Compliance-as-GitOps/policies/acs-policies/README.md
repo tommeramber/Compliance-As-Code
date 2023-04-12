@@ -34,6 +34,11 @@ git add ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policie
 # Split the file to 3 seperated k8s secret yaml files, and remove the initial "---" from the last two so the Helm would work without problems in ArgoCD 
 csplit init-bundle.yaml '/^---$/' '{*}' ; sed -i 's,^---$,,g' xx01 ; sed -i 's,^---$,,g' xx02
 
+# add namespace to all secret files
+sed  '/metadata:/a  \ \ namespace: stackrox' xx00 -i 
+sed  '/metadata:/a  \ \ namespace: stackrox' xx01 -i
+sed  '/metadata:/a  \ \ namespace: stackrox' xx02 -i
+
 git add --all
 git commit -m "acs init bundle"
 git push

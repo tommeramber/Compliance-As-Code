@@ -17,6 +17,12 @@ spec:
           severity: medium
           object-templates:
             - complianceType: musthave
+              objectDefinition:
+                apiVersion: v1
+                kind: Namespace
+                metadata:
+                  name: stackrox
+            - complianceType: musthave
               objectDefinition: 
 {{ .Files.Get "files/xx00" | indent 16 }}
             - complianceType: musthave
