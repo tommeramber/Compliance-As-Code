@@ -1,0 +1,33 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-deploy-init-bundle-on-all-managed-clusters
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name:  policy-deploy-init-bundle-on-all-managed-clusters
+        spec:
+          remediationAction: enforce
+          severity: medium
+          object-templates:
+            - complianceType: musthave
+              objectDefinition: |
+{{ .Files.Get "files/init-bundle.yaml" | indent 16 }}
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-deploy-init-bundle-on-all-managed-clusters
+placementRef:
+  name: global
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: policy-deploy-init-bundle-on-all-managed-clusters
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io

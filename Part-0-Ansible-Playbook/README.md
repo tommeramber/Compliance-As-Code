@@ -47,7 +47,8 @@ Note that the ArgoCD app-of-apps also generates an ArgoCD Application that point
 ![image](https://user-images.githubusercontent.com/60185557/231439068-ff19485a-119b-4087-b034-dc7ee1b9572b.png)
 
 
-[Back To Home](../README.md)
+[Continue to next Part](../Part-1-App-of-Apps/README.md)
+Or [Back To Home](../README.md)
 
 
 ## Cool for Geeks
