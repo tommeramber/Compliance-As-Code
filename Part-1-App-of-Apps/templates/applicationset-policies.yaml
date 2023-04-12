@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: {{ git_repo }}
+      repoURL: https://github.com/tommeramber/Compliance-As-Code.git
       revision: HEAD
       directories:
       - path: ../Part2-Compliance-as-GitOps/policies/*
@@ -14,15 +14,13 @@ spec:
         exclude: true
   template:
     metadata:
-      {% raw %}name: {{`'{{path.basename}}'`}}{% endraw %}
-
+      name: {{`'{{path.basename}}'`}}
     spec:
       project: default 
       source:
-        repoURL: {{ git_repo }}
+        repoURL: https://github.com/tommeramber/Compliance-As-Code.git
         targetRevision: HEAD
-        {% raw %}path: {{`'{{path}}'`}}{% endraw %}
-
+        path: {{`'{{path}}'`}}
         helm:
           valueFiles:
           - values.yaml

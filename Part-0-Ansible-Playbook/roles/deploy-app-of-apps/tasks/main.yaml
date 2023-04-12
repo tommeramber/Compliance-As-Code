@@ -31,6 +31,11 @@
     src: roles/deploy-app-of-apps/templates/app-install-security-tools.yaml.j2
     dest: ../Part-1-App-of-Apps/templates/app-install-security-tools.yaml
 
+- name: create applicationset-policies yaml based on your git repo variable using ansible template module
+  template:
+    src: roles/deploy-app-of-apps/templates/applicationset-policies.yaml.j2
+    dest: ../Part-1-App-of-Apps/templates/applicationset-policies.yaml
+
 - name: Apply App-of-Apps
   kubernetes.core.k8s:
     state: present
