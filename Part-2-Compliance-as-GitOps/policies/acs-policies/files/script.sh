@@ -2,6 +2,7 @@
 csplit init-bundle.yaml '/^---$/' '{*}' 
 sed -i 's,^---$,,g' xx01 
 sed -i 's,^---$,,g' xx02
+sed -i '/^#/d' xx00 
 
 # add namespace to all secret files
 sed  '/metadata:/a  \ \ namespace: stackrox' xx00 -i 
