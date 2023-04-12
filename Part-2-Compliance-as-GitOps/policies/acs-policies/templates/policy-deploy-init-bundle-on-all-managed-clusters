@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-deploy-init-bundle-on-all-managed-clusters
+  name: policy-deploy-init-bundle-on-all
 spec:
   remediationAction: enforce
   disabled: false
@@ -10,9 +10,9 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name:  policy-deploy-init-bundle-on-all-managed-clusters
+          name:  policy-deploy-init-bundle-on-all
         spec:
-          remediationAction: enforce
+          remediationAction: inform
           severity: medium
           object-templates:
             - complianceType: musthave
@@ -22,13 +22,14 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-deploy-init-bundle-on-all-managed-clusters
+  name: binding-policy-deploy-init-bundle-on-all
+  namespace: openshift-gitops
 placementRef:
   name: global
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: policy-deploy-init-bundle-on-all-managed-clusters
+  - name: policy-deploy-init-bundle-on-all
     kind: Policy
     apiGroup: policy.open-cluster-management.io
 ---
@@ -36,6 +37,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: global
+  namespace: openshift-gitops
 spec:
   clusterConditions:
   - status: "True"
