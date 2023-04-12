@@ -26,10 +26,13 @@ oc get secret -n stackrox central-htpasswd -ojsonpath='{.data.password}' | base6
 4. Click `Download Kubernetes secrets file`.
 ![image](https://user-images.githubusercontent.com/60185557/231582873-abe23f62-ce13-448a-b3e7-d03326402f9b.png)
 
-5. Add the secrets file to you forked git repo directory, and commit the change
+5. Add the secrets file to you forked git repo directory, split it to single k8s secret yaml files and commit the change
 ```bash
 cp ~/Downloads/<INIT_BUNDLE_SECRETS_FILE>.yaml ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/init-bundle.yaml
 git add ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/init-bundle.yaml
+
+csplit init-bundle.yaml '/^---$/' '{*}'
+
 git commit -m "acs init bundle"
 git push
 ```
