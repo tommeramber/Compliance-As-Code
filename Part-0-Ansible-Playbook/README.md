@@ -17,7 +17,6 @@ git commit -m "updated yamls"
 git push
 ```
 
-![image](https://user-images.githubusercontent.com/60185557/231428831-f2938abf-be51-4db2-8ac2-f56202146cec.png)
 
 ## Explainer
 The Ansible playbook will install the `Openshift-GitOps` operator on the ACM Hub Cluster, create an ArgoCD instance that we will use to apply our policies, and will grant it all required privileges. 
