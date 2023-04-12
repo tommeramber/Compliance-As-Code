@@ -27,5 +27,5 @@ git clone https://github.com/<YOUR_USERNAME>/Compliance-As-Code.git
 cd Compliance-As-Code
 ```
 2. Login to Hub cluster from your local machine
-3. [Register/Import or provision Openshift clusters](https://www.linkedin.com/in/tommeramber/?originalSubdomain=il)
+3. [Register/Import or provision Openshift clusters to ACM](https://www.linkedin.com/in/tommeramber/?originalSubdomain=il)
 4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md)
