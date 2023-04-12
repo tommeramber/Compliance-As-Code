@@ -18,7 +18,7 @@ spec:
           object-templates:
             - complianceType: musthave
               objectDefinition: |
-{{ .Files.Get "files/init-bundle.yaml" | indent 16 }}
+{{ .Files.Get "files/init-bundle.yaml" | indent 16 | quotes }}
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
