@@ -29,7 +29,6 @@ placementRef:
   name: global
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
-  namespace: openshift-gitops
 subjects:
   - name: policy-deploy-init-bundle-on-all-managed-clusters
     kind: Policy
