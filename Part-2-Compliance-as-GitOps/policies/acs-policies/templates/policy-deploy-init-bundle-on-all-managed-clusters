@@ -34,3 +34,15 @@ subjects:
   - name: policy-deploy-init-bundle-on-all-managed-clusters
     kind: Policy
     apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: global
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: vendor, operator: In, values: ["openshift"]}
