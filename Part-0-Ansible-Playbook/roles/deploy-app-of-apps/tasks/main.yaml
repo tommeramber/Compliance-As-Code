@@ -26,10 +26,10 @@
     src: roles/deploy-app-of-apps/templates/app-acm-argo-objects.yaml.j2
     dest: ../Part-1-App-of-Apps/templates/app-acm-argo-objects.yaml
 
-- name: create applicationset-security-tools yaml based on your git repo variable using ansible template module
+- name: create app-install-security-tools yaml based on your git repo variable using ansible template module
   template:
-    src: roles/deploy-app-of-apps/templates/applicationset-security-tools.yaml.j2
-    dest: ../Part-1-App-of-Apps/templates/applicationset-security-tools.yaml
+    src: roles/deploy-app-of-apps/templates/app-install-security-tools.yaml.j2
+    dest: ../Part-1-App-of-Apps/templates/app-install-security-tools.yaml
 
 - name: Apply App-of-Apps
   kubernetes.core.k8s:

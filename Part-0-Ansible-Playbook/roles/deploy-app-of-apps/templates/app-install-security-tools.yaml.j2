@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm-argo-objects-app
+  name: install-security-tools-app
   namespace: openshift-gitops
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,8 +11,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
-    repoURL: https://github.com/tommeramber/Compliance-As-Code.git
+    path: Part-2-Compliance-as-GitOps/install-security-tools 
+    repoURL: {{ git_repo }}
     targetRevision: HEAD
   syncPolicy:
     automated: {}
