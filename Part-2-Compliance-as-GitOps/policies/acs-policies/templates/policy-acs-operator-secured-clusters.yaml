@@ -12,6 +12,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-advanced-managed-cluster-security
+  namespace: openshift-gitops
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
@@ -108,6 +109,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: binding-policy-advanced-managed-cluster-security
+  namespace: openshift-gitops
 placementRef:
   name: placement-policy-advanced-managed-cluster-security
   kind: PlacementRule
@@ -121,6 +123,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: placement-policy-advanced-managed-cluster-security
+  namespace: openshift-gitops
 spec:
   clusterConditions:
   - status: "True"
