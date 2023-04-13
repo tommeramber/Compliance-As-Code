@@ -26,18 +26,20 @@ oc get secret -n stackrox central-htpasswd -ojsonpath='{.data.password}' | base6
 4. Click `Download Kubernetes secrets file`.
 ![image](https://user-images.githubusercontent.com/60185557/231582873-abe23f62-ce13-448a-b3e7-d03326402f9b.png)
 
-5. Add the secrets file to you forked git repo directory, and commit the change
+5. Remove existing files in case existing
+```bash
+rm -rf ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/*
+```
+
+6. Add the secrets file to you forked git repo directory, and commit the change
 ```bash
 cp ~/Downloads/<INIT_BUNDLE_SECRETS_FILE>.yaml ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/init-bundle.yaml
 git add ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/init-bundle.yaml
 
-# Split the file to 3 seperated k8s secret yaml files, and remove the initial "---" from the last two so the Helm would work without problems in ArgoCD 
-csplit init-bundle.yaml '/^---$/' '{*}' ; sed -i 's,^---$,,g' xx01 ; sed -i 's,^---$,,g' xx02
+# Run the script that will make the required editing to the init-bundle
+cd ~/<PATH_TO_FORKED_REPO>/Part-2-Compliance-as-GitOps/policies/acs-policies/files/
 
-# add namespace to all secret files
-sed  '/metadata:/a  \ \ namespace: stackrox' xx00 -i 
-sed  '/metadata:/a  \ \ namespace: stackrox' xx01 -i
-sed  '/metadata:/a  \ \ namespace: stackrox' xx02 -i
+./script.sh
 
 git add --all
 git commit -m "acs init bundle"
