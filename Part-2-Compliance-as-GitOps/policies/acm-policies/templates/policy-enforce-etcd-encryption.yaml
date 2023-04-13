@@ -48,4 +48,28 @@ spec:
                     - message: "All resources encrypted: secrets, configmaps"
                       reason: EncryptionCompleted
   remediationAction: enforce
-
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-enforce-etcd-encryption
+placementRef:
+  name: placement-policy-enforce-etcd-encryption
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: policy-enforce-etcd-encryption
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-enforce-etcd-encryption
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: enforce-etcd-encryption, operator: In, values: ["true"]}
