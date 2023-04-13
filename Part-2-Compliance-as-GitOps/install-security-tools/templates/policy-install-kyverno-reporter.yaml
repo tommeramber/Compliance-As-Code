@@ -77,13 +77,19 @@ spec:
                   channel: policy-reporter-channel/policy-reporter
                   packageOverrides:
                     - packageAlias: policy-reporter
-                      packageName: policy-reporter
+                      packageName: kyvernoPlugin
                       packageOverrides:
                       - path: spec
                         #  Run `helm show values policy-reporter/policy-reporter` to see available options for this chart
                         value:
                             podSecurityContext: "" # Openshift does not allow elevated privileges
                             securityContext: "" # Openshift does not allow elevated privileges
+                    - packageAlias: policy-reporter
+                      packageName: policy-reporter
+                      packageOverrides:
+                      - path: spec
+                        #  Run `helm show values policy-reporter/policy-reporter` to see available options for this chart
+                        value:
                             kyvernoPlugin:
                               enabled: true # enable KyvernoPlugin
                             ui:
@@ -122,6 +128,33 @@ spec:
                 spec:
                   pathname: https://kyverno.github.io/policy-reporter
                   type: HelmRepo
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-install-kyverno-reporter-fix-rbac
+        spec:
+          remediationAction: inform
+          severity: low
+          object-templates:
+            - complianceType: musthave
+                objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: RoleBinding
+                metadata:
+                  name: system:openshift:scc:anyuid
+                  namespace: policy-reporter
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: system:openshift:scc:anyuid
+                subjects:
+                  - kind: ServiceAccount
+                    name: policy-reporter
+                    namespace: policy-reporter
+                  - kind: ServiceAccount
+                    name: policy-reporter-kyverno-plugin
+                    namespace: policy-reporter
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
