@@ -177,18 +177,62 @@ spec:
           object-templates:
             - complianceType: musthave
               objectDefinition:
+                apiVersion: security.openshift.io/v1
+                kind: SecurityContextConstraints
+                metadata:
+                  name: policy-reporter-scc
+                priority: null
+                readOnlyRootFilesystem: false
+                requiredDropCapabilities:
+                - KILL
+                - MKNOD
+                - SETUID
+                - SETGID
+                runAsUser:
+                  type: MustRunAs
+                  uid: 1234
+                seLinuxContext:
+                  type: MustRunAs
+                supplementalGroups:
+                  type: RunAsAny
+                users: []
+                volumes:
+                - configMap
+                - downwardAPI
+                - emptyDir
+                - ephemeral
+                - persistentVolumeClaim
+                - projected
+                - secret
+                allowHostIPC: false
+                allowHostNetwork: false
+                allowHostPID: false
+                allowHostPorts: false
+                allowPrivilegeEscalation: true
+                allowPrivilegedContainer: false
+                allowedCapabilities: null
+                defaultAddCapabilities: null
+                fsGroup:
+                  type: MustRunAs
+                  uid: 1234
+                groups: []
+            - complianceType: musthave
+              objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
                 kind: RoleBinding
                 metadata:
-                  name: system:openshift:scc:privileged
+                  name: policy-reporter-binding
                   namespace: policy-reporter
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
                   kind: ClusterRole
-                  name: system:openshift:scc:anyuid
+                  name: policy-reporter-scc
                 subjects:
                   - kind: ServiceAccount
                     name: policy-reporter
+                    namespace: policy-reporter
+                  - kind: ServiceAccount
+                    name: default
                     namespace: policy-reporter
                   - kind: ServiceAccount
                     name: policy-reporter-kyverno-plugin
@@ -221,4 +265,4 @@ spec:
     type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-    - {key: install-kyverno, operator: In, values: ["true"]}
+    - {key: install-kyverno, operator: In, values: ["true"]}allowHostDirVolumePlugin: false
