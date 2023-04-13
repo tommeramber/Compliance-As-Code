@@ -200,6 +200,7 @@ metadata:
 placementRef:
   name: policy-reporter-placement-1
   kind: PlacementRule
+  namespace: policy-reporter
   apiGroup: apps.open-cluster-management.io
 subjects:
   - name: policy-install-policy-reporter-rbac
