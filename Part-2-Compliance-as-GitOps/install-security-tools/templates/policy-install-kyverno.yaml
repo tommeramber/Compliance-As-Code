@@ -126,7 +126,7 @@ spec:
                 spec:
                   clusterSelector:
                     matchLabels:
-                      environment: dev                      
+                      install-kyverno: true                      
             - complianceType: musthave
               objectDefinition:
                 apiVersion: apps.open-cluster-management.io/v1
@@ -163,7 +163,4 @@ spec:
       type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-      - key: install-kyverno
-        operator: In
-        values:
-          - 'true'
+      - {key: local-cluster, operator: In, values: ["true"]}
