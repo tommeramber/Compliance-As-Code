@@ -78,13 +78,16 @@ spec:
                   packageOverrides:
                     - packageAlias: policy-reporter
                       packageName: policy-reporter
-                       packageOverrides:
+                      packageOverrides:
                       - path: spec
                         #  Run `helm show values policy-reporter/policy-reporter` to see available options for this chart
                         value:
-                            kyvernoPlugin.enabled: true # enable KyvernoPlugin
-                            ui.enabled: true # enable UI
-                            ui.plugins.kyverno: true # Link UI and KyvernoPlugin
+                            kyvernoPlugin:
+                              enabled: true # enable KyvernoPlugin
+                            ui:
+                              enabled: true # enable UI
+                              plugins:
+                                kyverno: true # Link UI and KyvernoPlugin
                   placement:
                     placementRef:
                       name: policy-reporter-placement-1
