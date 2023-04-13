@@ -180,3 +180,55 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: local-cluster, operator: In, values: ["true"]}
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-install-policy-reporter-rbac
+  annotations:
+    policy.open-cluster-management.io/standards: NIST-CSF
+    policy.open-cluster-management.io/categories: CM Configuration Management
+    policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+spec:
+  remediationAction: enforce
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-install-kyverno-reporter-rbac
+        spec:
+          remediationAction: inform
+          severity: low
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
+                kind: RoleBinding
+                metadata:
+                  name: system:openshift:scc:anyuid
+                  namespace: policy-reporter
+                roleRef:
+                  apiGroup: rbac.authorization.k8s.io
+                  kind: ClusterRole
+                  name: system:openshift:scc:anyuid
+                subjects:
+                  - kind: ServiceAccount
+                    name: policy-reporter
+                    namespace: policy-reporter
+                  - kind: ServiceAccount
+                    name: policy-reporter-kyverno-plugin
+                    namespace: policy-reporter
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-install-policy-reporter-rbac
+placementRef:
+  name: policy-reporter-placement-1
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: policy-install-policy-reporter-rbac
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
