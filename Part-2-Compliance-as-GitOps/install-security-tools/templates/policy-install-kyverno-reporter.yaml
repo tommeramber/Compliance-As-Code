@@ -14,6 +14,27 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
+          name: policy-kyverno-namespace
+        spec:
+          remediationAction: inform
+          severity: low
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                kind: Namespace
+                apiVersion: v1
+                metadata:
+                  name: policy-reporter
+            - complianceType: musthave
+              objectDefinition:
+                kind: Namespace
+                apiVersion: v1
+                metadata:
+                  name: policy-reporter-channel
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
           name: policy-install-kyverno-reporter-prod-ns
         spec:
           remediationAction: inform
@@ -25,7 +46,7 @@ spec:
                 kind: Application
                 metadata:
                   name: policy-reporter
-                  namespace: kyverno
+                  namespace: policy-reporter
                   annotations:
                     apps.open-cluster-management.io/deployables: ''
                 spec:
@@ -45,7 +66,7 @@ spec:
                 kind: Subscription
                 metadata:
                   name: policy-reporter-subscription-1
-                  namespace: kyverno
+                  namespace: policy-reporter
                   annotations: {}
                   labels:
                     app: policy-reporter
@@ -53,7 +74,7 @@ spec:
                     apps.open-cluster-management.io/reconcile-rate: medium
                 spec:
                   name: policy-reporter
-                  channel: kyverno-channel/policy-reporter
+                  channel: policy-reporter-channel/policy-reporter
                   packageOverrides:
                     - packageAlias: policy-reporter
                       packageName: policy-reporter
@@ -67,7 +88,7 @@ spec:
                 kind: PlacementRule
                 metadata:
                   name: policy-reporter-placement-1
-                  namespace: kyverno
+                  namespace: policy-reporter
                   labels:
                     app: policy-reporter
                 spec:
@@ -85,7 +106,7 @@ spec:
                   annotations:
                     apps.open-cluster-management.io/reconcile-rate: medium
                   name: policy-reporter
-                  namespace: kyverno-channel
+                  namespace: policy-reporter-channel
                 spec:
                   pathname: https://kyverno.github.io/policy-reporter
                   type: HelmRepo
