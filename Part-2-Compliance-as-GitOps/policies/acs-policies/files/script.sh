@@ -1,6 +1,6 @@
 # Split the file to 3 seperated k8s secret yaml files, and remove the initial "---" from the last two so the Helm would work without problems in ArgoCD
 
-ACS_HOST=$(oc get route -n stackrox central | awk '{print $2}' | tail -n 1)
+ACS_HOST="https://$(oc get route -n stackrox central | awk '{print $2}' | tail -n 1)"
 sed  "/sensor-key.pem/i  \ \ acs-host: $ACS_HOST" init-bundle.yaml  -i
 
 
