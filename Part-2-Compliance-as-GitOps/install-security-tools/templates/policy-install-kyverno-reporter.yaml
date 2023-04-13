@@ -196,13 +196,13 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-install-policy-reporter-rbac
-  namespace: policy-reporter
+  name: policy-install-policy-reporter-rbac-placement-binding
+  namespace: openshift-gitops
 placementRef:
   name: placement-policy-install-kyverno
-  kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
+  kind: PlacementRule
 subjects:
   - name: policy-install-policy-reporter-rbac
-    kind: Policy
     apiGroup: policy.open-cluster-management.io
+    kind: Policy
