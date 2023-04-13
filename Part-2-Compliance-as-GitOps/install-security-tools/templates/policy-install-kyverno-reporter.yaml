@@ -211,6 +211,7 @@ spec:
                 allowPrivilegeEscalation: true
                 allowPrivilegedContainer: false
                 allowedCapabilities: null
+                allowHostDirVolumePlugin: false
                 defaultAddCapabilities: null
                 fsGroup:
                   type: MustRunAs
@@ -265,4 +266,4 @@ spec:
     type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
-    - {key: install-kyverno, operator: In, values: ["true"]}allowHostDirVolumePlugin: false
+    - {key: install-kyverno, operator: In, values: ["true"]}
