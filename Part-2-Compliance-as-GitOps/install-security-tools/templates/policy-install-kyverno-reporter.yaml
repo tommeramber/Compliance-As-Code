@@ -198,12 +198,27 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: policy-install-policy-reporter-rbac-placement-binding
-  namespace: kyverno
+  namespace: openshift-gitops
 placementRef:
-  name: kyverno-placement-1
+  name: placement-policy-reporter-rbac
   apiGroup: apps.open-cluster-management.io
   kind: PlacementRule
 subjects:
   - name: policy-install-policy-reporter-rbac
     apiGroup: policy.open-cluster-management.io
     kind: Policy
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-reporter-rbac
+  namespace: openshift-gitops
+  labels:
+    app: policy-reporter-rbac
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+    - {key: install-kyverno, operator: In, values: ["true"]}
