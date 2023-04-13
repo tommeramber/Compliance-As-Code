@@ -16,7 +16,7 @@ spec:
         metadata:
           name: policy-kyverno-namespace
         spec:
-          remediationAction: enforce
+          remediationAction: inform
           severity: low
           object-templates:
             - complianceType: musthave
@@ -37,7 +37,7 @@ spec:
         metadata:
           name: policy-install-kyverno-prod-ns
         spec:
-          remediationAction: enforce
+          remediationAction: inform
           severity: low
           object-templates:
             - complianceType: musthave
@@ -159,8 +159,8 @@ metadata:
   name: placement-policy-install-kyverno
 spec:
   clusterConditions:
-    - status: 'True'
-      type: ManagedClusterConditionAvailable
+  - status: "True"
+    type: ManagedClusterConditionAvailable
   clusterSelector:
     matchExpressions:
       - {key: local-cluster, operator: In, values: ["true"]}
