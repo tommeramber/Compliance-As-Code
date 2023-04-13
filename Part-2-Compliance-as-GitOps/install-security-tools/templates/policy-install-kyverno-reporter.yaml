@@ -100,6 +100,30 @@ spec:
                     placementRef:
                       name: policy-reporter-placement-1
                       kind: PlacementRule
+            - objectDefinition:
+                apiVersion: policy.open-cluster-management.io/v1
+                kind: ConfigurationPolicy
+                metadata:
+                  name: policy-install-kyverno-reporter-route
+                spec:
+                  remediationAction: inform
+                  severity: low
+                  object-templates:
+                    - complianceType: musthave
+                      objectDefinition:
+                        apiVersion: route.openshift.io/v1
+                        kind: Route
+                        metadata:
+                          name: policy-reporter-ui
+                        spec:
+                          port:
+                            targetPort: http
+                          tls:
+                            termination: edge
+                          to:
+                            kind: ""
+                            name: policy-reporter-ui
+                            weight: null                         
             - complianceType: mustonlyhave
               objectDefinition:
                 apiVersion: apps.open-cluster-management.io/v1
