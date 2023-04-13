@@ -106,6 +106,7 @@ spec:
                 kind: ConfigurationPolicy
                 metadata:
                   name: policy-install-kyverno-reporter-route
+                  namespace: policy-reporter
                 spec:
                   remediationAction: inform
                   severity: low
