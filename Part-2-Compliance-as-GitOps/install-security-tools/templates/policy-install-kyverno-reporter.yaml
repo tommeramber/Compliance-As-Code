@@ -101,6 +101,7 @@ spec:
                       name: policy-reporter-placement-1
                       kind: PlacementRule
             - objectDefinition:
+              complianceType: musthave
                 apiVersion: policy.open-cluster-management.io/v1
                 kind: ConfigurationPolicy
                 metadata:
