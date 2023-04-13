@@ -50,7 +50,6 @@ stringData:
     SAAwRQIgKZBFIDOJCwvb1AcT8I9f5dPPi1+Rcpl1TPqcGlusl50CIQCBeMxf1kUh
     jZoEAbY463qCtt0j7sgrCc4ZH0z1cvHteg==
     -----END CERTIFICATE-----
-  acs-host: https://central-stackrox.apps.cluster-52x22.52x22.sandbox2134.opentlc.com
   sensor-key.pem: |
     -----BEGIN EC PRIVATE KEY-----
     MHcCAQEEICNcORxzwFa8dVv7NL+FmvsJphXdE0mTrsrb32SWNMW7oAoGCCqGSM49
