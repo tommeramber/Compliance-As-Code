@@ -16,7 +16,7 @@ spec:
         metadata:
           name: policy-kyverno-namespace
         spec:
-          remediationAction: inform
+          remediationAction: enforce
           severity: low
           object-templates:
             - complianceType: musthave
@@ -37,7 +37,7 @@ spec:
         metadata:
           name: policy-install-kyverno-prod-ns
         spec:
-          remediationAction: inform
+          remediationAction: enforce
           severity: low
           object-templates:
             - complianceType: musthave
