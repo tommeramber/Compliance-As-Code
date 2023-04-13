@@ -1,0 +1,137 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: Policy
+metadata:
+  name: policy-install-policy-reporter
+  annotations:
+    policy.open-cluster-management.io/standards: NIST-CSF
+    policy.open-cluster-management.io/categories: CM Configuration Management
+    policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+spec:
+  remediationAction: enforce 
+  disabled: false
+  policy-templates:
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-kyverno-namespace
+        spec:
+          remediationAction: inform
+          severity: low
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                kind: Namespace
+                apiVersion: v1
+                metadata:
+                  name: kyverno
+            - complianceType: musthave
+              objectDefinition:
+                kind: Namespace
+                apiVersion: v1
+                metadata:
+                  name: kyverno-channel
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
+          name: policy-install-kyverno-reporter-prod-ns
+        spec:
+          remediationAction: inform
+          severity: low
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: app.k8s.io/v1beta1
+                kind: Application
+                metadata:
+                  name: policy-reporter
+                  namespace: kyverno
+                  annotations:
+                    apps.open-cluster-management.io/deployables: ''
+                spec:
+                  componentKinds:
+                    - group: apps.open-cluster-management.io
+                      kind: Subscription
+                  descriptor: {}
+                  selector:
+                    matchExpressions:
+                      - key: app
+                        operator: In
+                        values:
+                          - policy-reporter
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: apps.open-cluster-management.io/v1
+                kind: Subscription
+                metadata:
+                  name: policy-reporter-subscription-1
+                  namespace: kyverno
+                  annotations: {}
+                  labels:
+                    app: policy-reporter
+                    app.kubernetes.io/part-of: policy-reporter
+                    apps.open-cluster-management.io/reconcile-rate: medium
+                spec:
+                  name: policy-reporter
+                  channel: kyverno-channel/policy-reporter
+                  packageOverrides:
+                    - packageAlias: policy-reporter
+                      packageName: policy-reporter
+                  placement:
+                    placementRef:
+                      name: policy-reporter-placement-1
+                      kind: PlacementRule
+            - complianceType: mustonlyhave
+              objectDefinition:
+                apiVersion: apps.open-cluster-management.io/v1
+                kind: PlacementRule
+                metadata:
+                  name: policy-reporter-placement-1
+                  namespace: kyverno
+                  labels:
+                    app: policy-reporter
+                spec:
+                  clusterConditions:
+                  - status: "True"
+                    type: ManagedClusterConditionAvailable
+                  clusterSelector:
+                    matchExpressions:
+                      - {key: install-kyverno, operator: In, values: ["true"]}
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: apps.open-cluster-management.io/v1
+                kind: Channel
+                metadata:
+                  annotations:
+                    apps.open-cluster-management.io/reconcile-rate: medium
+                  name: policy-reporter
+                  namespace: kyverno-channel
+                spec:
+                  pathname: https://kyverno.github.io/policy-reporter
+                  type: HelmRepo
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: binding-policy-install-policy-reporter
+placementRef:
+  name: placement-policy-install-policy-reporter
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+  - name: policy-install-policy-reporter
+    kind: Policy
+    apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-install-policy-reporter
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - {key: local-cluster, operator: In, values: ["true"]}
