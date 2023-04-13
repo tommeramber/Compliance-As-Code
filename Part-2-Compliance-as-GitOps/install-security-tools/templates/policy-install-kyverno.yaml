@@ -93,7 +93,9 @@ spec:
                       packageName: kyverno
                       packageOverrides:
                       - path: spec
+                        #  Run `helm show values kyverno/kyverno` to see available options for this chart
                         value:
+                            replicaCount: 3 # High Availability
                             extraArgs:
                               - '--clientRateLimitQPS=20'
                               - '--clientRateLimitBurst=50'
