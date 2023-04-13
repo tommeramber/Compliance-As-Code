@@ -217,6 +217,8 @@ spec:
                   type: MustRunAs
                   uid: 1234
                 groups: []
+                seccompProfiles:    
+                - runtime/default
             - complianceType: musthave
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
