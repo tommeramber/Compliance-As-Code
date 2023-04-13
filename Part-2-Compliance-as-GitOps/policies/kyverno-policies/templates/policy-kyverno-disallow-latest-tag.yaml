@@ -6,6 +6,7 @@ metadata:
   annotations:
     policy.open-cluster-management.io/categories: kyverno-app-best-practices
 spec:
+  remediationAction: enforce
   disabled: false
   policy-templates:
     - objectDefinition:
