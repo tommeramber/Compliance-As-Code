@@ -199,7 +199,7 @@ metadata:
   name: binding-policy-install-policy-reporter-rbac
   namespace: policy-reporter
 placementRef:
-  name: policy-reporter-placement-1
+  name: placement-policy-install-kyverno
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
