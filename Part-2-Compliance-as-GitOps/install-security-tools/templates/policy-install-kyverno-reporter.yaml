@@ -153,6 +153,7 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: local-cluster, operator: In, values: ["true"]}
+---
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
