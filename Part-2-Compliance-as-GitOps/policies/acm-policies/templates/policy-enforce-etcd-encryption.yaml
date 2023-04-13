@@ -53,6 +53,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: binding-policy-enforce-etcd-encryption
+  namespace: openshift-gitops
 placementRef:
   name: placement-policy-enforce-etcd-encryption
   kind: PlacementRule
@@ -66,6 +67,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: placement-policy-enforce-etcd-encryption
+  namespace: openshift-gitops
 spec:
   clusterConditions:
   - status: "True"
