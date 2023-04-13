@@ -138,7 +138,7 @@ spec:
           severity: low
           object-templates:
             - complianceType: musthave
-                objectDefinition:
+              objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
                 kind: RoleBinding
                 metadata:
