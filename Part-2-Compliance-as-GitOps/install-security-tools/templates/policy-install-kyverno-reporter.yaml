@@ -88,6 +88,8 @@ spec:
                               enabled: true # enable UI
                               plugins:
                                 kyverno: true # Link UI and KyvernoPlugin
+                            securityContext: {} # Openshift does not allow elevated privileges
+                            podSecurityContext: {} # Openshift does not allow elevated privileges
                   placement:
                     placementRef:
                       name: policy-reporter-placement-1
