@@ -229,7 +229,7 @@ spec:
                 roleRef:
                   apiGroup: rbac.authorization.k8s.io
                   kind: ClusterRole
-                  name: policy-reporter-scc
+                  name: system:openshift:scc:policy-reporter-scc
                 subjects:
                   - kind: ServiceAccount
                     name: policy-reporter
