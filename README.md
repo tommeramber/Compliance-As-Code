@@ -28,4 +28,22 @@ cd Compliance-As-Code
 ```
 2. Login to Hub cluster from your local machine
 3. [Register/Import or provision Openshift clusters to ACM](https://www.youtube.com/watch?v=DId5fVzBv7E)
-4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md)
+4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md) + git push the changes
+5. Login to the new ArgoCD instance and see that (almost) everything is ready
+
+## How everything is installed on the managed clusters?
+The ArgoCD is synced with our Git Repo, and it deploys ACM policies on ACM, they are based on ACM's built-in Governance feature.
+
+ACM Policies defines for ACM what is the desired state of K8s objects on the managed clusters (or the Hub itself) and in case they are adsent - it (ACM) will create them on the relevant cluster. 
+
+Several examples on how this being used in this lab:
+1. Install kyverno on the managed clusters that includes the `install-kyverno=true` label in the ACM Hub + kyverno `policy-reporter UI` for better observability.
+2. Install ACS on the Hub cluster itself.
+3. Install "pure" ACM compliance policies on the managed clusters such as encypt the etcd.
+4. By integrate kyverno policies inside ACM policies, ACM deploys the kyverno policies compliance policies on the managed clusters that has kyverno installed.
+
+
+## About ACS in this demo
+This lab will install ACS for you on the ACM Hub.
+It will also preper almost everything for auto importing of the mangaed clusters to the ACS complete scanning **BUT** you need to do one manual operation before that.
+Read the instructions in [this page](Part-2-Compliance-as-GitOps/policies/acs-policies/README.md)
