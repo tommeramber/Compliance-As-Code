@@ -4,7 +4,8 @@
 1. Change the `git_repo` to point to your forked git repo project
 ```bash
 cd Part-0-Ansible-Playbook
-sed -i 's,https://github.com/tommeramber/Compliance-As-Code.git,https://github.com/<YOUR_USERNAME>/Compliance-As-Code.git,g' playbook.yaml
+
+sed -i 's,tommeramber,<YOUR_USERNAME>,g' playbook.yaml
 ```
 2. Run the Playbook
 ```bash
