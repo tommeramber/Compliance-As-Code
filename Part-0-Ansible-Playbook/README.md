@@ -57,7 +57,7 @@ Or [Back To Home](../README.md)
 When creating this lab with ansible as the initiation tool, I came across a problem; 
 I wanted to make the project as generic as possiable, so I based the yaml files creation on Ansible templateing - they can be found [here](roles/deploy-app-of-apps/templates/). This is not a problem in most cases, but I also use argocd application/applicationset objects inside of helm chart - both are using curly braces as part of their mechanisem; To escape the issue I figured I need to use escaping methods for both mechanisems. 
 
-If you would take a look in [this template file](roles/deploy-app-of-apps/templates/applicationset-security-tools.yaml.j2) you will see the following line:
+If you would take a look in [this template file](roles/deploy-app-of-apps/templates/applicationset-policies.yaml.j2) you will see the following line:
 
 ```
 {% raw %}path: {{`'{{path}}'`}}{% endraw %}
