@@ -25,6 +25,7 @@ This session provides a demonstration of how to manage compliance policies for m
 ```bash
 git clone https://github.com/<YOUR_USERNAME>/Compliance-As-Code.git
 cd Compliance-As-Code
+export BASE=$(pwd)
 ```
 2. Login to Hub cluster from your local machine
 3. [Register/Import or provision Openshift clusters to ACM](https://www.youtube.com/watch?v=DId5fVzBv7E)
