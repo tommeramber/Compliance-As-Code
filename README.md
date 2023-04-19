@@ -1,4 +1,4 @@
-# Intro
+==# Intro
 This lab has been created for RH Summit 2023 Compliance-as-code interactive session by [Tommer Amber](https://www.linkedin.com/in/tommeramber/?originalSubdomain=il). 
 
 This session provides a demonstration of how to manage compliance policies for multiple Kubernetes clusters across disciplines, including configuration management, image vulnerability detection, continuous integration and continuous delivery (CI/CD) pipelines, and cluster misconfiguration mutation. During this session, you’ll get an overview of how to use with Red Hat Advanced Cluster Management for Kubernetes, Red Hat Advanced Cluster Security for Kubernetes, ArgoCD, and Kyverno to:
@@ -54,6 +54,8 @@ ansible-playbook playbook.yaml
 
 5. Login to the new ArgoCD instance and see that (almost) everything is ready
 
+6. Label the managed clusters in ACM to get security policies by ACM
+
 ## How everything is installed on the managed clusters?
 The ArgoCD is synced with our Git Repo, and it deploys ACM policies on ACM, they are based on ACM's built-in Governance feature.
 
@@ -93,8 +95,3 @@ This Helm Chart directory actually holds `ArgoCD Applications` & `ApplicationSet
 | [kyverno-policies](../Part-2/-Compliance-as-GitOps/policies/kyverno-policies)   | Apply our Kyverno-k8s-native custom policies that will be installed on our managed clusters that has a specific label. You can see the required label in the [README.md](../Part-2/-Compliance-as-GitOps/policies/kyverno-policies) |                                                                [ArgoCD ApplicationSet](templates/applicationset-policies.yaml) | 
 | [acm-argo-objects](../Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls)                                                                | Link the YAMLs our Ansible Automation generated  & applied to link between our ACM and ArgoCD instance; From that point our ArgoCD literally manages itself and every change to our Argo instance will be applied by our ArgoCD     | [ArgoCD Application ](templates/app-acm-argo-objects.yaml)                                                        |
 
-
-## About ACS in this demo
-This lab will install ACS for you on the ACM Hub.
-It will also preper almost everything for auto importing of the mangaed clusters to the ACS complete scanning **BUT** you need to do one manual operation before that.
-Read the instructions in [this page](Part-2-Compliance-as-GitOps/policies/acs-policies/README.md)
