@@ -5,24 +5,23 @@
   hosts: localhost
   gather_facts: false
   connection: local
+  
   vars:
     git_repo: "git@github.com:tommeramber/Compliance-As-Code.git"
+
   collections:
     - lvrfrc87.git_acp
-  tasks:
   
-          #    - include_role:
-          #        name: install-and-configure-openshift-gitops-operator 
-          #
-          #    - include_role:
-          #        name: acm-openshift-gitops-integration
-          #
-          #    - include_role:
-          #        name: deploy-app-of-apps
-          #
-#    - include_role:
-#       name: git-add-commit-and-push
-#---
+  tasks:
+    - include_role:
+        name: install-and-configure-openshift-gitops-operator 
+    
+    - include_role:
+        name: acm-openshift-gitops-integration
+    
+    - include_role:
+        name: deploy-app-of-apps
+    
     - name: "SSH Push all updated YAMLs to Git for ArgoCD"
       git_acp:
         path: "{{ playbook_dir }}"
