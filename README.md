@@ -46,7 +46,7 @@ This session provides a demonstration of how to manage compliance policies for m
 
 2. Login to Hub cluster from your local machine
 3. [Register/Import or provision Openshift clusters to ACM](https://www.youtube.com/watch?v=DId5fVzBv7E)
-4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md)
+4. Run the Ansible playbook - [Automation Explainer](Part-0-Ansible-Playbook/README.md)
 ```bash
 cd Part-0-Ansible-Playbook
 ansible-playbook playbook.yaml
