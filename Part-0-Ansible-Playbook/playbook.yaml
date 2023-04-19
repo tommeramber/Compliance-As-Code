@@ -26,7 +26,7 @@
     - name: "SSH Push all updated YAMLs to Git for ArgoCD"
       git_acp:
         path: .
-        branch: master
+        branch: main
         comment: Add all.
         add: [ "." ]
         url: "{{ git_repo }}"
