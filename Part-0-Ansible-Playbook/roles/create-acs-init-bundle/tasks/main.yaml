@@ -1,0 +1,31 @@
+---
+- name: Download latest roxctl binary
+  get_url:
+    url: https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl
+    dest: /usr/bin/roxctl
+    mode: '0755'
+  become: true
+
+# Wait for a ACS to be installed on ACM Hub
+- name: Wait for Deployment
+  kubernetes.core.k8s:
+    definition:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: central
+        namespace: stackrox
+      spec:
+        paused: True
+    wait: yes
+    wait_condition:
+      type: Progressing
+      status: Unknown
+      reason: DeploymentPaused
+
+- name: Run script to generate ACS init-bundle and edit relevat files
+  shell: roles/create-acs-init-bundle/scripts/script.sh
+
+- name: git add, commit and push
+  include_role:
+    name: git-add-commit-and-push

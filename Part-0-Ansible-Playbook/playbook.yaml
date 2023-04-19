@@ -21,3 +21,6 @@
 
     - include_role:
         name: deploy-app-of-apps
+
+    - include_role:
+        name: git-add-commit-and-push
