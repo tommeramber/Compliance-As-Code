@@ -17,3 +17,16 @@
   kubernetes.core.k8s:
     state: present
     definition: "{{ lookup('file', 'yamls/gitops-subscription.yaml') | from_yaml }}"
+
+
+- name: Wait till the Object is created
+  kubernetes.core.k8s_info:
+    kind: Deployment
+    wait: yes
+    name: openshift-gitops-server
+    namespace: openshift-gitops
+    wait_sleep: 3
+    wait_timeout: 360
+    wait_condition:
+      type: Available
+      status: True

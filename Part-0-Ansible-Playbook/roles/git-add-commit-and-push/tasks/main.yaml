@@ -1,6 +1,6 @@
 ---
-- name: SSH | push all updated YAMLs to Git for ArgoCD
-  git_acp:
+- name: "SSH Push all updated YAMLs to Git for ArgoCD"
+  lvrfrc87.git_acp:
     path: .
     branch: master
     comment: Add all.

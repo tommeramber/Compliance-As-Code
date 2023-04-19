@@ -7,20 +7,28 @@
   connection: local
   vars:
     git_repo: "https://github.com/tommeramber/Compliance-As-Code.git"
+  collections:
+    - lvrfrc87.git_acp
   tasks:
   
-    - include_role:
-        name: install-and-configure-openshift-gitops-operator 
-        
-      # Pause betweeen roles so the Openshift-GitOps operator will finish creating the relevant Namespace and CRDs
-    - pause:
-        seconds: 120
-
-    - include_role:
-        name: acm-openshift-gitops-integration
-
-    - include_role:
-        name: deploy-app-of-apps
-
-    - include_role:
-        name: git-add-commit-and-push
+          #    - include_role:
+          #        name: install-and-configure-openshift-gitops-operator 
+          #
+          #    - include_role:
+          #        name: acm-openshift-gitops-integration
+          #
+          #    - include_role:
+          #        name: deploy-app-of-apps
+          #
+#    - include_role:
+#       name: git-add-commit-and-push
+#---
+    - name: "SSH Push all updated YAMLs to Git for ArgoCD"
+      git_acp:
+        path: "."             
+        branch: master
+        comment: Add all.
+        add: ["." ]
+        mode: ssh
+        push_option: ci.skip
+        url: "{{ git_repo }}"
