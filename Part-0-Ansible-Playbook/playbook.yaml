@@ -6,7 +6,7 @@
   gather_facts: false
   connection: local
   vars:
-    git_repo: "https://github.com/tommeramber/Compliance-As-Code.git"
+    git_repo: "git@github.com:tommeramber/Compliance-As-Code.git"
   collections:
     - lvrfrc87.git_acp
   tasks:
