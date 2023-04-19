@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: Part-2-Compliance-as-GitOps/install-security-tools 
-    repoURL: git@github.com:tommeramber/Compliance-As-Code.git
+    repoURL: https://github.com/tommeramber/Compliance-As-Code.git
     targetRevision: HEAD
   syncPolicy:
     automated: {}
