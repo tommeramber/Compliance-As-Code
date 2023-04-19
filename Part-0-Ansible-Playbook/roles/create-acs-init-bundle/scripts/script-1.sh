@@ -1,3 +1,5 @@
+export ROX_CENTRAL_ADDRESS=""
+export PASS=""
 export PASS=$(oc -n stackrox extract secret/central-htpasswd --to=- | tail -n 1)
 export ROX_CENTRAL_ADDRESS=$(oc get route -n stackrox central -o jsonpath='{.spec.host}')
 
