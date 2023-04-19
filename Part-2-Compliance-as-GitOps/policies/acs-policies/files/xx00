@@ -1,0 +1,60 @@
+# This is a StackRox cluster init bundle.
+# This bundle can be used for setting up any number of StackRox secured clusters.
+# NOTE: This file contains secret data and needs to be handled and stored accordingly.
+#
+#   name:      "init_bundle"
+#   createdAt: 2023-04-19T18:56:38.487595468Z
+#   expiresAt: 2024-04-18T18:57:00Z
+#   id:        bc72768d-16d2-4092-996a-86e9d3ce50b8
+#
+
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: stackrox
+  annotations:
+    init-bundle.stackrox.io/created-at: "2023-04-19T18:56:38.487595468Z"
+    init-bundle.stackrox.io/expires-at: "2024-04-18T18:57:00Z"
+    init-bundle.stackrox.io/id: bc72768d-16d2-4092-996a-86e9d3ce50b8
+    init-bundle.stackrox.io/name: init_bundle
+  creationTimestamp: null
+  name: sensor-tls
+stringData:
+  ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIB0zCCAXigAwIBAgIUTHLE9Q3uBeDxT3Ne3BYS/J/NZ7MwCgYIKoZIzj0EAwIw
+    RzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYD
+    VQQFExM1NjcwNzA5NTM2MDUwMDE0OTQ1MB4XDTIzMDQxOTE4MTAwMFoXDTI4MDQx
+    NzE4MTAwMFowRzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9y
+    aXR5MRwwGgYDVQQFExM1NjcwNzA5NTM2MDUwMDE0OTQ1MFkwEwYHKoZIzj0CAQYI
+    KoZIzj0DAQcDQgAE/N+6ekC9paGHX7dYK5+R1XjJNP91C24B5NBf7zs3gkJRnh8S
+    lUJOESw7w50Y5d6gFhklSeku0D67pkSW0PYcy6NCMEAwDgYDVR0PAQH/BAQDAgEG
+    MA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFLD6FFaudgZ7IhOLiCAMFdQB9vqY
+    MAoGCCqGSM49BAMCA0kAMEYCIQDW3KGUkMKug6z6/Sz7HK/cMFIhAWCRlkdSDdUX
+    VBJnigIhAPbXdTucNkT+1E2vcJb4dPbAUQ6dbhl5lotUZxjrQQSQ
+    -----END CERTIFICATE-----
+  sensor-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIICtTCCAlqgAwIBAgIJAP75TuBZv/0gMAoGCCqGSM49BAMCMEcxJzAlBgNVBAMT
+    HlN0YWNrUm94IENlcnRpZmljYXRlIEF1dGhvcml0eTEcMBoGA1UEBRMTNTY3MDcw
+    OTUzNjA1MDAxNDk0NTAeFw0yMzA0MTkxNzU3MDBaFw0yNDA0MTgxODU3MDBaMIGm
+    MS0wKwYDVQQKEyRiYzcyNzY4ZC0xNmQyLTQwOTItOTk2YS04NmU5ZDNjZTUwYjgx
+    FzAVBgNVBAsMDlNFTlNPUl9TRVJWSUNFMT0wOwYDVQQDDDRTRU5TT1JfU0VSVklD
+    RTogMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAtMDAwMDAwMDAwMDAwMR0wGwYDVQQF
+    ExQxODM3MjgwMjg4MDMyMDA0NDMyMDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
+    BIH94WhvzdgTogfF4iBoATQYjWHl2xKC60kVXwnKrIHuxwSopf3z3FOV3AHNFDf6
+    xu8mEuv0neKwD8Tfc5dEnXOjgc4wgcswDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQW
+    MBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQg
+    SEV/KhXfSSKE+VArxImvm6o8gzAfBgNVHSMEGDAWgBSw+hRWrnYGeyITi4ggDBXU
+    Afb6mDBMBgNVHREERTBDgg9zZW5zb3Iuc3RhY2tyb3iCE3NlbnNvci5zdGFja3Jv
+    eC5zdmOCG3NlbnNvci13ZWJob29rLnN0YWNrcm94LnN2YzAKBggqhkjOPQQDAgNJ
+    ADBGAiEA6YNHE36JQ4s0bSj0P1z+xS8g/wBmJ9OscKir4sIaFZACIQCruibMDq3R
+    mJHATcrBdLA5G+GdCXnD1garcOWUZQGZ4g==
+    -----END CERTIFICATE-----
+  acs-host: central-stackrox.apps.cluster-6qjgm.6qjgm.sandbox1439.opentlc.com:443
+  sensor-key.pem: |
+    -----BEGIN EC PRIVATE KEY-----
+    MHcCAQEEIImiEr3MdBzfe79Wou/77MK3+xnsKWvdxv3unoJd4+kzoAoGCCqGSM49
+    AwEHoUQDQgAEgf3haG/N2BOiB8XiIGgBNBiNYeXbEoLrSRVfCcqsge7HBKil/fPc
+    U5XcAc0UN/rG7yYS6/Sd4rAPxN9zl0Sdcw==
+    -----END EC PRIVATE KEY-----
