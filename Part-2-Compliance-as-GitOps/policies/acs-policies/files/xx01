@@ -1,0 +1,52 @@
+
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: stackrox
+  annotations:
+    init-bundle.stackrox.io/created-at: "2023-04-19T18:52:13.498755253Z"
+    init-bundle.stackrox.io/expires-at: "2024-04-18T18:52:00Z"
+    init-bundle.stackrox.io/id: d37f42f5-6cdd-42fa-9ff4-0504174def47
+    init-bundle.stackrox.io/name: init_bundle
+  creationTimestamp: null
+  name: sensor-tls
+stringData:
+  ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIB0zCCAXigAwIBAgIUTHLE9Q3uBeDxT3Ne3BYS/J/NZ7MwCgYIKoZIzj0EAwIw
+    RzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYD
+    VQQFExM1NjcwNzA5NTM2MDUwMDE0OTQ1MB4XDTIzMDQxOTE4MTAwMFoXDTI4MDQx
+    NzE4MTAwMFowRzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9y
+    aXR5MRwwGgYDVQQFExM1NjcwNzA5NTM2MDUwMDE0OTQ1MFkwEwYHKoZIzj0CAQYI
+    KoZIzj0DAQcDQgAE/N+6ekC9paGHX7dYK5+R1XjJNP91C24B5NBf7zs3gkJRnh8S
+    lUJOESw7w50Y5d6gFhklSeku0D67pkSW0PYcy6NCMEAwDgYDVR0PAQH/BAQDAgEG
+    MA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFLD6FFaudgZ7IhOLiCAMFdQB9vqY
+    MAoGCCqGSM49BAMCA0kAMEYCIQDW3KGUkMKug6z6/Sz7HK/cMFIhAWCRlkdSDdUX
+    VBJnigIhAPbXdTucNkT+1E2vcJb4dPbAUQ6dbhl5lotUZxjrQQSQ
+    -----END CERTIFICATE-----
+  sensor-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIICsjCCAligAwIBAgIIa/WR37YPZLowCgYIKoZIzj0EAwIwRzEnMCUGA1UEAxMe
+    U3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYDVQQFExM1NjcwNzA5
+    NTM2MDUwMDE0OTQ1MB4XDTIzMDQxOTE3NTIwMFoXDTI0MDQxODE4NTIwMFowgaUx
+    LTArBgNVBAoTJGQzN2Y0MmY1LTZjZGQtNDJmYS05ZmY0LTA1MDQxNzRkZWY0NzEX
+    MBUGA1UECwwOU0VOU09SX1NFUlZJQ0UxPTA7BgNVBAMMNFNFTlNPUl9TRVJWSUNF
+    OiAwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAxHDAaBgNVBAUT
+    Ezc3NzkyODQzMjEzNzA1OTY1MzgwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARm
+    HNOBapE9X7CcWw7yewEPkwpTipHw20S8kpXwtHu7sojppDzqOXxzDotviIh5O0SV
+    1XMg2oc1WYt0JKFoWiU0o4HOMIHLMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAU
+    BggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQUSTXk
+    u9JX6PzhhJMtYrJe9fIGD7MwHwYDVR0jBBgwFoAUsPoUVq52BnsiE4uIIAwV1AH2
+    +pgwTAYDVR0RBEUwQ4IPc2Vuc29yLnN0YWNrcm94ghNzZW5zb3Iuc3RhY2tyb3gu
+    c3ZjghtzZW5zb3Itd2ViaG9vay5zdGFja3JveC5zdmMwCgYIKoZIzj0EAwIDSAAw
+    RQIhANRwI7zUg2h4ySZlc5ToeMdVpPmw1F0u+aKA2yVvc58iAiBZstLgSTDeI/TV
+    +5VjUXn0OwynrybXdDLTzkoZ6H/zhA==
+    -----END CERTIFICATE-----
+  acs-host: central-stackrox.apps.cluster-6qjgm.6qjgm.sandbox1439.opentlc.com
+  acs-host: central-stackrox.apps.cluster-tlql7.tlql7.sandbox2587.opentlc.com:443
+  sensor-key.pem: |
+    -----BEGIN EC PRIVATE KEY-----
+    MHcCAQEEIMGDGX7sKmzBwYhxp8I/RqhXXxC678RtArj+DwUBOCyzoAoGCCqGSM49
+    AwEHoUQDQgAEZhzTgWqRPV+wnFsO8nsBD5MKU4qR8NtEvJKV8LR7u7KI6aQ86jl8
+    cw6Lb4iIeTtEldVzINqHNVmLdCShaFolNA==
+    -----END EC PRIVATE KEY-----
