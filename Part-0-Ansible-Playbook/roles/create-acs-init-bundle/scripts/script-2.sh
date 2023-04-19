@@ -1,7 +1,5 @@
 # Split the file to 3 seperated k8s secret yaml files, and remove the initial "---" from the last two so the Helm would work without problems in ArgoCD
 
-sed  "/sensor-key.pem/i  \ \ acs-host: $ROX_CENTRAL_ADDRESS:443" $(pwd)/init_bundle.yaml  -i
-
 csplit $(pwd)/init_bundle.yaml '/^---$/' '{*}' 
 sed -i 's,^---$,,g' $(pwd)/xx01 
 sed -i 's,^---$,,g' $(pwd)/xx02
