@@ -99,6 +99,7 @@ stringData:
     MEUCIQDvqb3nuTcFeGpw/ZbQ8NAJ+hKMkxzIs83QE+aOCEGKOwIgaFXfQxX3ME1m
     orRi5vDiQfEeeQnSA6sHw1JMRiqDjsA=
     -----END CERTIFICATE-----
+  acs-host: central-stackrox.apps.cluster-nwfcl.nwfcl.sandbox2662.opentlc.com:443:443
   sensor-key.pem: |
     -----BEGIN EC PRIVATE KEY-----
     MHcCAQEEIMgczBWW5lnBPJsGupJT1JHCcLFLe70jH4/pyITjnEy6oAoGCCqGSM49

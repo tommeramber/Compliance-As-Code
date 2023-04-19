@@ -1,0 +1,58 @@
+# This is a StackRox cluster init bundle.
+# This bundle can be used for setting up any number of StackRox secured clusters.
+# NOTE: This file contains secret data and needs to be handled and stored accordingly.
+#
+#   name:      "init_bundle"
+#   createdAt: 2023-04-19T13:07:52.863323394Z
+#   expiresAt: 2024-04-18T13:08:00Z
+#   id:        db022044-1e27-498c-9d1a-eb3d7384830c
+#
+
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    init-bundle.stackrox.io/created-at: "2023-04-19T13:07:52.863323394Z"
+    init-bundle.stackrox.io/expires-at: "2024-04-18T13:08:00Z"
+    init-bundle.stackrox.io/id: db022044-1e27-498c-9d1a-eb3d7384830c
+    init-bundle.stackrox.io/name: init_bundle
+  creationTimestamp: null
+  name: collector-tls
+stringData:
+  ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIB0zCCAXigAwIBAgIUE4ItUa1Is917ErJkCN67aKGLWf0wCgYIKoZIzj0EAwIw
+    RzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYD
+    VQQFExMxMjgwMDAxMzEyNTc5MDEwODExMB4XDTIzMDQxOTExMzAwMFoXDTI4MDQx
+    NzExMzAwMFowRzEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9y
+    aXR5MRwwGgYDVQQFExMxMjgwMDAxMzEyNTc5MDEwODExMFkwEwYHKoZIzj0CAQYI
+    KoZIzj0DAQcDQgAE+HOkh+xdh2r2vSwzagRii2gnY37TW+gzwiC2QUfcJX2usBNT
+    tMNxKrsKeS+wOE4j3THowpuZDAmlsvyKvS3cOKNCMEAwDgYDVR0PAQH/BAQDAgEG
+    MA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFGm9vwdkSnun8LnhdvSbqJS3UwUQ
+    MAoGCCqGSM49BAMCA0kAMEYCIQDKVlsZQH+IgnYc1bpI6sSix+J2GtS6fhcUgG8p
+    izIVvwIhAOTvAeyhh34I7ukXZcNzkptYICoc6xcPDUfxNGR5prTr
+    -----END CERTIFICATE-----
+  collector-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIICoDCCAkegAwIBAgIIc+Tf7Anndo8wCgYIKoZIzj0EAwIwRzEnMCUGA1UEAxMe
+    U3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRwwGgYDVQQFExMxMjgwMDAx
+    MzEyNTc5MDEwODExMB4XDTIzMDQxOTEyMDgwMFoXDTI0MDQxODEzMDgwMFowgasx
+    LTArBgNVBAoTJGRiMDIyMDQ0LTFlMjctNDk4Yy05ZDFhLWViM2Q3Mzg0ODMwYzEa
+    MBgGA1UECwwRQ09MTEVDVE9SX1NFUlZJQ0UxQDA+BgNVBAMMN0NPTExFQ1RPUl9T
+    RVJWSUNFOiAwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAxHDAa
+    BgNVBAUTEzgzNTEwNDU4MTM5MjMxODIyMjMwWTATBgcqhkjOPQIBBggqhkjOPQMB
+    BwNCAATKVUh5k84lnVNUOrpEkzn0w/njHcCl8VNYs7BoLAvShtB53mSYztNMPZ/F
+    Baw7GhK9TPzsP5a/aG3U4TCzS+Y+o4G3MIG0MA4GA1UdDwEB/wQEAwIFoDAdBgNV
+    HSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNVHQ4E
+    FgQUYKvf5EthciE5uoSowx2warnp7zEwHwYDVR0jBBgwFoAUab2/B2RKe6fwueF2
+    9JuolLdTBRAwNQYDVR0RBC4wLIISY29sbGVjdG9yLnN0YWNrcm94ghZjb2xsZWN0
+    b3Iuc3RhY2tyb3guc3ZjMAoGCCqGSM49BAMCA0cAMEQCIF7jmVSTR2c2qLYgzfZg
+    OiJ3Er+3a2eUtq0T6vtQBcO9AiAFRu1Ek/68KmSwy0EZy1+NPZg2V6QR2Jyb0exQ
+    27s1Eg==
+    -----END CERTIFICATE-----
+  collector-key.pem: |
+    -----BEGIN EC PRIVATE KEY-----
+    MHcCAQEEINA140yyfpcvx0wISQYF/P66LzesXx2KQTu79frFErN1oAoGCCqGSM49
+    AwEHoUQDQgAEylVIeZPOJZ1TVDq6RJM59MP54x3ApfFTWLOwaCwL0obQed5kmM7T
+    TD2fxQWsOxoSvUz87D+Wv2ht1OEws0vmPg==
+    -----END EC PRIVATE KEY-----
