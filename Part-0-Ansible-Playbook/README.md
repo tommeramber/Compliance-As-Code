@@ -1,24 +1,5 @@
 # Part 0 - Lab initation with Ansible Playbook
 
-## Edit & Run the Ansible-Playbook 
-1. Change the `git_repo` to point to your forked git repo project
-```bash
-cd Part-0-Ansible-Playbook
-
-sed -i 's,tommeramber,<YOUR_USERNAME>,g' playbook.yaml
-```
-2. Run the Playbook
-```bash
-ansible-playbook playbook.yaml
-```
-3. Git add, commit and push all of your changes so ArgoCD will see the new `ArgoCD Applications` and `ArgoCD ApplicationSets` that are in your forked repo
-```bash
-git add --all :/
-git commit -m "updated yamls"
-git push
-```
-
-
 ## Explainer
 The Ansible playbook will install the `Openshift-GitOps` operator on the ACM Hub Cluster, create an ArgoCD instance that we will use to apply our policies, and will grant it all required privileges. 
 
