@@ -9,9 +9,6 @@
   vars:
     git_repo: "git@github.com:tommeramber/Compliance-As-Code.git"
 
-  collections:
-    - lvrfrc87.git_acp
-  
   tasks:
     - include_role:
         name: install-and-configure-openshift-gitops-operator 
@@ -23,9 +20,4 @@
         name: deploy-app-of-apps
     
     - name: "SSH Push all updated YAMLs to Git for ArgoCD"
-      git_acp:
-        path: "{{ playbook_dir }}"
-        branch: main
-        comment: Add all.
-        add: [ "." ]
-        url: "{{ git_repo }}"
+      shell: "git add --all :/ ; git commit -m initial-ansible-playbook ; git push"
