@@ -6,6 +6,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-kyverno-add-quota
+  namespace: openshift-gitops
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
@@ -83,6 +84,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: binding-policy-kyverno-add-quota
+  namespace: openshift-gitops
 placementRef:
   name: placement-policy-kyverno-add-quota
   kind: PlacementRule
@@ -96,6 +98,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: placement-policy-kyverno-add-quota
+  namespace: openshift-gitops
 spec:
   clusterConditions:
     - status: "True"

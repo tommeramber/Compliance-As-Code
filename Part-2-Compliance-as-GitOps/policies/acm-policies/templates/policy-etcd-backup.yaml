@@ -2,6 +2,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
   name: policy-etcd-backup
+  namespace: openshift-gitops
   annotations:
     policy.open-cluster-management.io/categories: NIST SP 800-53
     policy.open-cluster-management.io/controls: CM Configuration Management 
@@ -245,6 +246,7 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
   name: binding-policy-etcd-backup
+  namespace: openshift-gitops
 placementRef:
   name: placement-policy-etcd-backup
   kind: PlacementRule
@@ -258,6 +260,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: placement-policy-etcd-backup
+  namespace: openshift-gitops
 spec:
   clusterConditions:
   - status: "True"
