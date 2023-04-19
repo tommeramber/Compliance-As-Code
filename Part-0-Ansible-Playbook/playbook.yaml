@@ -25,7 +25,7 @@
 #---
     - name: "SSH Push all updated YAMLs to Git for ArgoCD"
       git_acp:
-        path: "."             
+        path: .
         branch: master
         comment: Add all.
         add: [ "." ]
