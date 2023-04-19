@@ -22,12 +22,23 @@ This session provides a demonstration of how to manage compliance policies for m
 
 ## HowTo
 0. Fork this project
-1. Clone
-```bash
-git clone https://github.com/<YOUR_USERNAME>/Compliance-As-Code.git
-cd Compliance-As-Code
-export BASE=$(pwd)
-```
+1. SSH Clone (A must for the automation)
+
+   1.1. Create SSH Key on you machine
+   ```bash
+   ssh-keygen
+   cat ~/.ssh/id_rsa.pub
+   ```
+   
+   1.2. Copy the public key and create new repo SSH key here - https://github.com/settings/ssh/new
+   
+   1.3. Clone the repo
+   ```bash
+   export USERNAME=<YOUR_GIT_REPO_USERNAME>
+   git clone git@github.com:$USERNAME/Compliance-As-Code.git
+   cd Compliance-As-Code
+   export BASE=$(pwd)
+   ```
 2. Login to Hub cluster from your local machine
 3. [Register/Import or provision Openshift clusters to ACM](https://www.youtube.com/watch?v=DId5fVzBv7E)
 4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md) + git push the changes
