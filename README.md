@@ -17,7 +17,7 @@ This session provides a demonstration of how to manage compliance policies for m
     - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
     - [Ansible module for kubernetes](https://docs.ansible.com/ansible/latest/collections/kubernetes/core/index.html#plugins-in-kubernetes-core) - ```ansible-galaxy collection install kubernetes.core``` 
     - [Relevant python modules](https://stackoverflow.com/questions/60866755/ansible-k8s-module-failed-to-import-the-required-python-library-openshift-on) - ```pip3 install openshift pyyaml kubernetes --user```
-    - [Ansible module for Git](https://galaxy.ansible.com/lvrfrc87/git_acp) - ```ansible-galaxy collection install community.general```
+    - [Ansible module for Git](https://galaxy.ansible.com/lvrfrc87/git_acp) - ```ansible-galaxy collection install lvrfrc87.git_acp```
     - [oc](https://console.redhat.com/openshift/downloads)
 
 ## HowTo
