@@ -10,17 +10,17 @@
     git_repo: "git@github.com:tommeramber/Compliance-As-Code.git"
 
   tasks:
-          #    - include_role:
-          #        name: install-and-configure-openshift-gitops-operator 
-          #    
-          #    - include_role:
-          #        name: acm-openshift-gitops-integration
-          #    
-          #    - include_role:
-          #        name: deploy-app-of-apps
-          #    
-          #    - name: "SSH Push all updated YAMLs to Git for ArgoCD"
-          #      shell: "git add --all :/ ; git commit -m initial-ansible-playbook ; git push"
+    - include_role:
+        name: install-and-configure-openshift-gitops-operator 
+    
+    - include_role:
+        name: acm-openshift-gitops-integration
+    
+    - include_role:
+        name: deploy-app-of-apps
+    
+    - name: "SSH Push all updated YAMLs to Git for ArgoCD"
+      shell: "git add --all :/ ; git commit -m initial-ansible-playbook ; git push"
 
     - include_role:
         name: create-acs-init-bundle

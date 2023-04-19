@@ -1,30 +1,30 @@
 ---
-#- name: register status of /tmp/roxctl
-#  stat:
-#    path: /tmp/roxctl
-#  register: roxctl
-#
-#- name: Download latest roxctl binary
-#  get_url:
-#    url: https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl
-#    dest: /tmp/roxctl
-#    mode: '0755'
-#  when: "not roxctl.stat.exists"
-#
-#- name: Wait till ACS is created
-#  kubernetes.core.k8s_info:
-#    kind: Deployment
-#    wait: yes
-#    name: central
-#    namespace: stackrox
-#    wait_sleep: 3
-#    wait_timeout: 360
-#    wait_condition:
-#      type: Available
-#      status: True
+- name: register status of /tmp/roxctl
+  stat:
+    path: /tmp/roxctl
+  register: roxctl
 
-#- name: Run script to generate ACS init-bundle
-#  shell: roles/create-acs-init-bundle/scripts/script-1.sh
+- name: Download latest roxctl binary
+  get_url:
+    url: https://mirror.openshift.com/pub/rhacs/assets/latest/bin/Linux/roxctl
+    dest: /tmp/roxctl
+    mode: '0755'
+  when: "not roxctl.stat.exists"
+
+- name: Wait till ACS is created
+  kubernetes.core.k8s_info:
+    kind: Deployment
+    wait: yes
+    name: central
+    namespace: stackrox
+    wait_sleep: 3
+    wait_timeout: 360
+    wait_condition:
+      type: Available
+      status: True
+
+- name: Run script to generate ACS init-bundle
+  shell: roles/create-acs-init-bundle/scripts/script-1.sh
 
 - name: Run script to edit relevat files
   shell: roles/create-acs-init-bundle/scripts/script-2.sh
