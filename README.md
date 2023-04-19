@@ -17,7 +17,6 @@ This session provides a demonstration of how to manage compliance policies for m
     - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
     - [Ansible module for kubernetes](https://docs.ansible.com/ansible/latest/collections/kubernetes/core/index.html#plugins-in-kubernetes-core) - ```ansible-galaxy collection install kubernetes.core``` 
     - [Relevant python modules](https://stackoverflow.com/questions/60866755/ansible-k8s-module-failed-to-import-the-required-python-library-openshift-on) - ```pip3 install openshift pyyaml kubernetes --user```
-    - [Ansible module for Git](https://galaxy.ansible.com/lvrfrc87/git_acp) - ```ansible-galaxy collection install lvrfrc87.git_acp``` - [Link to Blog](https://lvrfrc87.medium.com/git-add-commit-and-push-with-ansible-67861c5e0782)
     - [oc](https://console.redhat.com/openshift/downloads)
 
 ## HowTo
@@ -39,9 +38,20 @@ This session provides a demonstration of how to manage compliance policies for m
    cd Compliance-As-Code
    export BASE=$(pwd)
    ```
+
+   1.4. Change the Playbook to point to your git forked repo
+   ```bash
+   sed -i "s,tommeramber,$USERNAME,g" Part-0-Ansible-Playbook/playbook.yaml
+   ```
+
 2. Login to Hub cluster from your local machine
 3. [Register/Import or provision Openshift clusters to ACM](https://www.youtube.com/watch?v=DId5fVzBv7E)
-4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md) + git push the changes
+4. [Edit & Run the initation Ansible-Playbook](Part-0-Ansible-Playbook/README.md)
+```bash
+cd Part-0-Ansible-Playbook
+ansible-playbook playbook.yaml
+```
+
 5. Login to the new ArgoCD instance and see that (almost) everything is ready
 
 ## How everything is installed on the managed clusters?
