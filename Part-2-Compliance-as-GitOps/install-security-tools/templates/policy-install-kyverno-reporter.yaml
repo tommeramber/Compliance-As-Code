@@ -240,8 +240,7 @@ spec:
                 allowHostDirVolumePlugin: false
                 defaultAddCapabilities: null
                 fsGroup:
-                  type: MustRunAs
-                  uid: 1234
+                  type: RunAsAny
                 groups: []
                 seccompProfiles:    
                 - runtime/default
