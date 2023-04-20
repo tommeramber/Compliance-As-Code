@@ -177,33 +177,22 @@ spec:
           object-templates:
             - complianceType: musthave
               objectDefinition:
-                apiVersion: policy.open-cluster-management.io/v1
-                kind: ConfigurationPolicy
+                apiVersion: route.openshift.io/v1
+                kind: Route
                 metadata:
-                  name: policy-install-kyverno-reporter-route
+                  labels:
+                    app: policy-reporter
+                  name: policy-reporter-ui
                   namespace: policy-reporter
                 spec:
-                  remediationAction: inform
-                  severity: low
-                  object-templates:
-                    - complianceType: musthave
-                      objectDefinition:
-                        apiVersion: route.openshift.io/v1
-                        kind: Route
-                        metadata:
-                          labels:
-                            app: policy-reporter
-                          name: policy-reporter-ui
-                          namespace: policy-reporter
-                        spec:
-                          port:
-                            targetPort: http
-                          tls:
-                            termination: edge
-                          to:
-                            kind: ""
-                            name: policy-reporter-ui
-                            weight: null                         
+                  port:
+                    targetPort: http
+                  tls:
+                    termination: edge
+                  to:
+                    kind: ""
+                    name: policy-reporter-ui
+                    weight: null                         
             - complianceType: musthave
               objectDefinition:
                 apiVersion: security.openshift.io/v1
