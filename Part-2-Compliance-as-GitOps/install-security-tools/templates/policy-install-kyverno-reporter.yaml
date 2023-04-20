@@ -248,6 +248,21 @@ spec:
             - complianceType: musthave
               objectDefinition:
                 apiVersion: rbac.authorization.k8s.io/v1
+                kind: ClusterRole
+                metadata:
+                  name: system:openshift:scc:policy-reporter-scc
+                rules:
+                - apiGroups:
+                  - security.openshift.io
+                  resourceNames:
+                  - policy-reporter-scc
+                  resources:
+                  - securitycontextconstraints
+                  verbs:
+                  - use
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: rbac.authorization.k8s.io/v1
                 kind: RoleBinding
                 metadata:
                   name: policy-reporter-binding
