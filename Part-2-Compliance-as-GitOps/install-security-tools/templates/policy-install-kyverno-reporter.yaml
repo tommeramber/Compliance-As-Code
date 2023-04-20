@@ -117,6 +117,7 @@ spec:
                         kind: Route
                         metadata:
                           name: policy-reporter-ui
+                          namespace: policy-reporter
                         spec:
                           port:
                             targetPort: http
