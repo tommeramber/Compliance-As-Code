@@ -1,13 +1,13 @@
 ---
-# Based on : https://docs.ansible.com/ansible/latommeramber/collections/kubernetes/core/k8s_module.html
-# Based on : https://docs.ansible.com/ansible/latommeramber/collections/kubernetes/core/k8s_info_module.html#ansible-collections-kubernetes-core-k8s-info-module
+# Based on : https://docs.ansible.com/ansible/latommer-summit-demo/collections/kubernetes/core/k8s_module.html
+# Based on : https://docs.ansible.com/ansible/latommer-summit-demo/collections/kubernetes/core/k8s_info_module.html#ansible-collections-kubernetes-core-k8s-info-module
 - name: "RH Summit Demo - Part 0 - Ansible install GitOps Operator"
   hosts: localhost
   gather_facts: false
   connection: local
   
   vars:
-    git_repo: "https://github.com/tommeramber/Compliance-As-Code.git"
+    git_repo: "https://github.com/tommer-summit-demo/Compliance-As-Code.git"
 
   tasks:
     - include_role:

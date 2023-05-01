@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps
+  name: acm-argo-objects-app
   namespace: openshift-gitops
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: Part-1-App-of-Apps/ 
+    path: Part-0-Ansible-Playbook/roles/acm-openshift-gitops-integration/yamls 
     repoURL: https://github.com/tommer-summit-demo/Compliance-As-Code.git
     targetRevision: HEAD
   syncPolicy:
