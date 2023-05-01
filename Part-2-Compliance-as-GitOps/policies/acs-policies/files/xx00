@@ -1,0 +1,59 @@
+# This is a StackRox cluster init bundle.
+# This bundle can be used for setting up any number of StackRox secured clusters.
+# NOTE: This file contains secret data and needs to be handled and stored accordingly.
+#
+#   name:      "init_bundle"
+#   createdAt: 2023-05-01T11:12:35.63797081Z
+#   expiresAt: 2024-04-30T11:13:00Z
+#   id:        062c75f4-4612-4d18-a8b0-e8a1d8c24582
+#
+
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: stackrox
+  annotations:
+    init-bundle.stackrox.io/created-at: "2023-05-01T11:12:35.63797081Z"
+    init-bundle.stackrox.io/expires-at: "2024-04-30T11:13:00Z"
+    init-bundle.stackrox.io/id: 062c75f4-4612-4d18-a8b0-e8a1d8c24582
+    init-bundle.stackrox.io/name: init_bundle
+  creationTimestamp: null
+  name: admission-control-tls
+stringData:
+  admission-control-cert.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIICwzCCAmigAwIBAgIJAL34nTE8gR7NMAoGCCqGSM49BAMCMEYxJzAlBgNVBAMT
+    HlN0YWNrUm94IENlcnRpZmljYXRlIEF1dGhvcml0eTEbMBkGA1UEBRMSNTAyMzcw
+    MDMwMTcxMjM4MTY3MB4XDTIzMDUwMTEwMTMwMFoXDTI0MDQzMDExMTMwMFowgbwx
+    LTArBgNVBAoTJDA2MmM3NWY0LTQ2MTItNGQxOC1hOGIwLWU4YTFkOGMyNDU4MjEi
+    MCAGA1UECwwZQURNSVNTSU9OX0NPTlRST0xfU0VSVklDRTFIMEYGA1UEAww/QURN
+    SVNTSU9OX0NPTlRST0xfU0VSVklDRTogMDAwMDAwMDAtMDAwMC0wMDAwLTAwMDAt
+    MDAwMDAwMDAwMDAwMR0wGwYDVQQFExQxMzY4ODg2MzkwMjE4NjY3NTkxNzBZMBMG
+    ByqGSM49AgEGCCqGSM49AwEHA0IABKuKOH9eViNbDtNmhRAzNku0o1f0e74WOj+Y
+    I86sx5zhZg1NryzY6kqoN6xi17NT5Im4IM3jlVv09xnOXr4M9qajgccwgcQwDgYD
+    VR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNV
+    HRMBAf8EAjAAMB0GA1UdDgQWBBRNjiOXBXtQnvfspGTBte0sRqGtRzAfBgNVHSME
+    GDAWgBT7fgK1x4pWNfrLaI9sIPCd0VPVuzBFBgNVHREEPjA8ghphZG1pc3Npb24t
+    Y29udHJvbC5zdGFja3JveIIeYWRtaXNzaW9uLWNvbnRyb2wuc3RhY2tyb3guc3Zj
+    MAoGCCqGSM49BAMCA0kAMEYCIQCAxoM0yCN1tG325laeMu0rE75Gql6YhJZQeMym
+    kQkt3QIhAP/rlaSx79EaMlMAOj7CjU1ITSNlph9RqUhLuOUhxCXV
+    -----END CERTIFICATE-----
+  admission-control-key.pem: |
+    -----BEGIN EC PRIVATE KEY-----
+    MHcCAQEEIGm5IKOibtsd5fLxcBLrfQNAxlXTCRM9XA/KkY2C4Dg8oAoGCCqGSM49
+    AwEHoUQDQgAEq4o4f15WI1sO02aFEDM2S7SjV/R7vhY6P5gjzqzHnOFmDU2vLNjq
+    Sqg3rGLXs1PkibggzeOVW/T3Gc5evgz2pg==
+    -----END EC PRIVATE KEY-----
+  ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIB0DCCAXagAwIBAgIUBXMsLEvSPX+NVHK/PGifzvjUijIwCgYIKoZIzj0EAwIw
+    RjEnMCUGA1UEAxMeU3RhY2tSb3ggQ2VydGlmaWNhdGUgQXV0aG9yaXR5MRswGQYD
+    VQQFExI1MDIzNzAwMzAxNzEyMzgxNjcwHhcNMjMwNTAxMTEwMjAwWhcNMjgwNDI5
+    MTEwMjAwWjBGMScwJQYDVQQDEx5TdGFja1JveCBDZXJ0aWZpY2F0ZSBBdXRob3Jp
+    dHkxGzAZBgNVBAUTEjUwMjM3MDAzMDE3MTIzODE2NzBZMBMGByqGSM49AgEGCCqG
+    SM49AwEHA0IABP9Cyrcov4lJlGrmLPmJq98BkGqZofPvFunU8d6G5UFfIved2yP0
+    fpn8QTHb0ms3i/zZvGlfEz1BadUAYhEewc2jQjBAMA4GA1UdDwEB/wQEAwIBBjAP
+    BgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBT7fgK1x4pWNfrLaI9sIPCd0VPVuzAK
+    BggqhkjOPQQDAgNIADBFAiEAtEP9Q1XcCisbmfPCdSbWpSR0Au2vbLehPqp11PBr
+    KxcCIDQNB9oMGEdpohOeUxiYzQQ4yjyLeF+vLgwpp4QlJKQm
+    -----END CERTIFICATE-----
