@@ -7,7 +7,7 @@
   connection: local
   
   vars:
-    git_repo: "https://github.com/tommer-summit-demo/Compliance-As-Code.git"
+    git_repo: "https://github.com/tommeramber/Compliance-As-Code.git"
 
   tasks:
     - include_role:
