@@ -4,9 +4,7 @@ metadata:
   name: policy-etcd-backup
   namespace: openshift-gitops
   annotations:
-    policy.open-cluster-management.io/categories: NIST SP 800-53
-    policy.open-cluster-management.io/controls: CM Configuration Management 
-    policy.open-cluster-management.io/standards: CM-2 Baseline Configuration
+    policy.open-cluster-management.io/categories: ACM Policies
 spec:
   disabled: false
   policy-templates:

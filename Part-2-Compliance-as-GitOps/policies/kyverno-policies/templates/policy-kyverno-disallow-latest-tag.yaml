@@ -4,7 +4,7 @@ metadata:
   name: policy-kyverno-disallow-latest-tag
   namespace: openshift-gitops
   annotations:
-    policy.open-cluster-management.io/categories: kyverno-app-best-practices
+    policy.open-cluster-management.io/categories: Kyverno Policies
 spec:
   remediationAction: enforce
   disabled: false
