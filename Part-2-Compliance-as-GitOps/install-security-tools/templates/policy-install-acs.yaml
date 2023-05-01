@@ -4,7 +4,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-advanced-cluster-security-central
+  name: policy-install-acs
   annotations:
     policy.open-cluster-management.io/categories: Security-Tools
 spec:
@@ -111,7 +111,7 @@ placementRef:
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: policy-advanced-cluster-security-central
+- name: policy-install-acs
   kind: Policy
   apiGroup: policy.open-cluster-management.io
 ---
