@@ -1,3 +1,4 @@
+{{- if .Values.required }}
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
@@ -169,3 +170,4 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: local-cluster, operator: In, values: ["true"]}
+{{- end }}
