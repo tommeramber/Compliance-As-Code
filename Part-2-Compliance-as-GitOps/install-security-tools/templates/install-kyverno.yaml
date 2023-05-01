@@ -40,7 +40,7 @@ metadata:
     apps.open-cluster-management.io/reconcile-rate: medium
 spec:
   name: kyverno
-  channel: kyverno
+  channel: kyverno/kyverno
   packageOverrides:
     - packageAlias: kyverno
       packageName: kyverno
